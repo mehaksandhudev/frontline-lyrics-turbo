@@ -1,6 +1,9 @@
 <div align="center">
 
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:6366f1,50:8b5cf6,100:06b6d4&height=220&section=header&text=FrontLine%20Lyrics%20Turbo&fontSize=48&fontAlignY=38&animation=fadeIn&fontColor=ffffff&desc=Instant%20Desktop%20Lyrics%20Overlay%20for%20YouTube%20Music%2C%20Spotify%20%26%20Windows&descAlignY=58&descSize=16" width="100%"/>
+# ⚡ FrontLine Lyrics Turbo
+
+**A blazing-fast, synchronized desktop lyrics overlay for YouTube Music, Spotify & Windows audio.**  
+*Re-engineered for sub-2-second instant detection, zero cloud telemetry, and 100% local privacy.*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-6366f1?style=for-the-badge&logo=opensourceinitiative&logoColor=white)](LICENSE)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/mehaksandhudev/frontline-lyrics-turbo)
@@ -98,6 +101,8 @@ Security and privacy are non-negotiable. Here is our direct transparency guarant
 
 ## ✨ Key Features
 
+- **Hover-Activated Playback Controls**: Control playback without leaving your workflow — pause, play, and skip controls gracefully illuminate on hover and vanish during listening.
+- **Auto-Sync Mode Toggle**: Seamlessly toggle automatic track tracking directly from the `⋮ Settings` menu or HUD.
 - **Floating Glassmorphic Overlay**: Borderless, drag-and-drop, semi-transparent HUD that stays elegantly above your apps without stealing focus.
 - **Millisecond Precision Sync**: Active lyrics light up in vivid gold/yellow the moment the vocal hits, with previous and next lines previewed.
 - **Gurmukhi (Punjabi) & Indic Script Intelligence**: Automatically detects and prioritizes native scripts (Gurmukhi `ਪੰਜਾਬੀ` and Devanagari `हिन्दी`) over Romanized Latin transliterations.
