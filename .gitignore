@@ -1,0 +1,27 @@
+# Dependencies & Virtual Environments
+node_modules/
+__pycache__/
+*.py[cod]
+*$py.class
+*.env
+.venv/
+env/
+
+# Build artifacts
+build/
+dist/
+*.spec.bak
+frontline_source/FrontlineServer/build/
+frontline_source/FrontlineServer/dist/
+
+# Binaries & Bundled distribution (distributed via GitHub Releases)
+Frontline_Fast/
+*.zip
+
+# Logs & temp files
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+frontline_source/Frontline/FrontlineServer/
