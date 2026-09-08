@@ -1,4 +1,4 @@
-﻿<Window x:Class="FrontLineOverlay.MainWindow"
+<Window x:Class="FrontLineOverlay.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="FrontLine Lyrics" Height="300" Width="700" MinWidth="450" MinHeight="200"
@@ -601,6 +601,7 @@
         </Thumb>
 
         <StackPanel x:Name="TopRightControls" Panel.ZIndex="40" Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,8,8,0">
+            <Button x:Name="BtnViewMode" Content="🖼" Width="30" Height="30" Style="{StaticResource TopWindowBtn}" FontSize="13" ToolTip="Toggle: Banner + Lyrics / Pure Lyrics" Click="BtnViewMode_Click"/>
             <ToggleButton x:Name="BtnMenu" Content="⋮" Width="30" Height="30" Style="{StaticResource SoberToggle}" Cursor="Hand" FontSize="18" FontWeight="Bold"/>
             <Button x:Name="BtnMinimize" Content="—" Width="30" Height="30" Style="{StaticResource TopWindowBtn}" FontSize="12" FontWeight="Bold" Click="BtnMinimize_Click"/>
             <Button x:Name="BtnRestore" Content="❐" Width="30" Height="30" Style="{StaticResource TopWindowBtn}" FontSize="14" Visibility="Collapsed" Click="BtnRestore_Click"/>
@@ -615,6 +616,12 @@
                     <!-- Tudo aqui dentro fica oculto durante a prévia de opacidade (SetSettingsPreviewMode),
                          pra sobrar só o rótulo + slider de opacidade flutuando sobre a prévia. -->
                     <StackPanel x:Name="SettingsExtras">
+                        <TextBlock x:Name="LblViewModeTitle" Text="DISPLAY MODE" Foreground="#66FFFFFF" FontSize="9" FontWeight="Bold" Margin="0,0,0,8"/>
+                        <UniformGrid Columns="2" Margin="0,0,0,15">
+                            <ToggleButton x:Name="OptBannerLyrics" Content="Banner + Lyrics" Style="{StaticResource SquareGlassToggle}" FontSize="9" Click="OptViewMode_Click" Tag="banner" Margin="2" IsChecked="True"/>
+                            <ToggleButton x:Name="OptLyricsOnly" Content="Lyrics Only" Style="{StaticResource SquareGlassToggle}" FontSize="9" Click="OptViewMode_Click" Tag="lyrics" Margin="2"/>
+                        </UniformGrid>
+
                         <Button x:Name="BtnManualSyncToggle" Content="MANUAL SYNC" Style="{StaticResource SquareGlassButton}" Padding="0,6" Margin="0,0,0,15" Click="BtnManualSync_Toggle" Visibility="Collapsed"/>
                         <TextBlock x:Name="LblTranslateTitle" Text="TRANSLATE LYRICS" Foreground="#66FFFFFF" FontSize="9" FontWeight="Bold" Margin="0,0,0,8"/>
                         <UniformGrid Columns="3" Margin="0,0,0,15">

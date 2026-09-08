@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -91,6 +91,7 @@ namespace FrontLineOverlay
         private bool _loadingSettings;
         private bool _suppressWindowSave;
         private bool _wantAuto;
+        private string _viewMode = "banner";
         private bool _autoSyncedWithServer;
         private readonly ObservableCollection<SearchHistoryEntry> _searchHistory = [];
         private ICollectionView? _historyView;
@@ -583,9 +584,18 @@ namespace FrontLineOverlay
                 byte alpha = (byte)(255 * bgOpacity);
                 MainBorder.Background = new SolidColorBrush(Color.FromArgb(alpha, 5, 5, 5));
                 MainBorder.BorderBrush = Brushes.Transparent;
-                SidePanelCol.Width = new GridLength(0);
-                ContentPanelCol.Width = new GridLength(100, GridUnitType.Star);
-                SidePanel.Visibility = Visibility.Collapsed;
+                if (_viewMode == "lyrics")
+                {
+                    SidePanelCol.Width = new GridLength(0);
+                    ContentPanelCol.Width = new GridLength(100, GridUnitType.Star);
+                    SidePanel.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    SidePanelCol.Width = new GridLength(35, GridUnitType.Star);
+                    ContentPanelCol.Width = new GridLength(65, GridUnitType.Star);
+                    SidePanel.Visibility = Visibility.Visible;
+                }
                 ResizeGrip.Visibility = Visibility.Collapsed;
                 TopRightControls.Visibility = Visibility.Collapsed;
                 PlayingControls.Visibility = Visibility.Collapsed;
@@ -595,12 +605,21 @@ namespace FrontLineOverlay
                 SetWindowLongPtr(hwnd, GWL_EXSTYLE, new IntPtr(extendedStyle & ~transparentBit));
                 MainBorder.Background = new SolidColorBrush(Color.FromArgb(255, 10, 10, 10));
                 MainBorder.BorderBrush = new SolidColorBrush(Color.FromArgb(34, 255, 255, 255));
-                SidePanelCol.Width = new GridLength(35, GridUnitType.Star);
-                ContentPanelCol.Width = new GridLength(65, GridUnitType.Star);
-                SidePanel.Visibility = Visibility.Visible;
+                if (_viewMode == "lyrics")
+                {
+                    SidePanelCol.Width = new GridLength(0);
+                    ContentPanelCol.Width = new GridLength(100, GridUnitType.Star);
+                    SidePanel.Visibility = Visibility.Collapsed;
+                }
+                else
+                {
+                    SidePanelCol.Width = new GridLength(35, GridUnitType.Star);
+                    ContentPanelCol.Width = new GridLength(65, GridUnitType.Star);
+                    SidePanel.Visibility = Visibility.Visible;
+                }
                 ResizeGrip.Visibility = Visibility.Visible;
                 TopRightControls.Visibility = Visibility.Visible;
-                PlayingControls.Visibility = Visibility.Visible;
+                PlayingControls.Visibility = Visibility.Collapsed;
             }
         }
 
@@ -1416,9 +1435,45 @@ namespace FrontLineOverlay
                 _wantAuto = AppSettings.GetBool("AutoMode", false);
                 if (BtnAutoSide != null)
                     BtnAutoSide.IsChecked = _wantAuto;
+                _viewMode = AppSettings.GetString("ViewMode", "banner");
+                SyncViewModeUI();
             }
             catch (Exception ex) { CrashReporter.Log(ex, "RestoreFontAndAuto"); }
             finally { _loadingSettings = false; }
+        }
+
+        private void BtnViewMode_Click(object sender, RoutedEventArgs e)
+        {
+            SetViewMode(_viewMode == "banner" ? "lyrics" : "banner");
+        }
+
+        private void OptViewMode_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is FrameworkElement fe && fe.Tag is string mode)
+            {
+                SetViewMode(mode);
+            }
+        }
+
+        private void SetViewMode(string mode)
+        {
+            _viewMode = mode;
+            AppSettings.Set("ViewMode", mode);
+            SyncViewModeUI();
+            UpdateVisualState(isGhostMode);
+        }
+
+        private void SyncViewModeUI()
+        {
+            if (OptBannerLyrics != null) OptBannerLyrics.IsChecked = (_viewMode == "banner");
+            if (OptLyricsOnly != null) OptLyricsOnly.IsChecked = (_viewMode == "lyrics");
+            if (BtnViewMode != null)
+            {
+                BtnViewMode.Content = (_viewMode == "banner") ? "🖼" : "📝";
+                BtnViewMode.ToolTip = (_viewMode == "banner")
+                    ? "Current: Banner + Lyrics (Click for Pure Lyrics)"
+                    : "Current: Pure Lyrics (Click for Banner + Lyrics)";
+            }
         }
 
         private void RestoreWindowPlacement()

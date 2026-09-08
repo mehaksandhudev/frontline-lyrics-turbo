@@ -25,3 +25,5 @@ Frontline_Fast/
 Thumbs.db
 
 frontline_source/Frontline/FrontlineServer/
+.tools/
+scratch/

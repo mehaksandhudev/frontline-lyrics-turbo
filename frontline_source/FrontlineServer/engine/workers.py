@@ -204,9 +204,9 @@ async def live_refingerprint_worker(manager):
                 continue
 
             offset = sane_media_position(raw_offset, fallback=0.0) or 0.0
-            same_title = lyrics.names_are_close(manager.current_song or "", new_song or "")
+            same_title = lyrics.titles_match(manager.current_song or "", new_song or "")
             same_artist = (not new_artist or not manager.current_artist
-                           or lyrics.names_are_close(manager.current_artist, new_artist))
+                           or lyrics.artists_match(manager.current_artist, new_artist))
             if not (same_title and same_artist):
                 logging.info(
                     "Ao vivo: re-fingerprint outra faixa %s - %s", new_song, new_artist
