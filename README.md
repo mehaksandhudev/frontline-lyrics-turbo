@@ -6,6 +6,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D4?style=for-the-badge&logo=windows&logoColor=white)](https://github.com/mehaksandhudev/frontline-lyrics-turbo)
 [![Detection Speed](https://img.shields.io/badge/Detection-~1.2s%20Turbo-FF4500?style=for-the-badge&logo=speedtest&logoColor=white)](https://github.com/mehaksandhudev/frontline-lyrics-turbo)
 [![Privacy First](https://img.shields.io/badge/Privacy-100%25%20Local-22c55e?style=for-the-badge&logo=shield&logoColor=white)](https://github.com/mehaksandhudev/frontline-lyrics-turbo#-100-safe--privacy-first-zero-data-breach)
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/mhksandhu)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-☕-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/mehaksandhudev)
 
 </div>
@@ -168,10 +169,11 @@ dotnet run -c Release
 
 ---
 
-## ☕ Support
+## ☕ Support & Donations
 
-If this project saved your sanity or made your music experience better, consider buying me a coffee!
+If this project saved your sanity or made your music experience better, consider supporting development via **PayPal** or **Buy Me A Coffee**:
 
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/mhksandhu)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-☕-FFDD00?style=for-the-badge&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/mehaksandhudev)
 
 ---
@@ -199,3 +201,12 @@ If this project saved your sanity or made your music experience better, consider
 
 This project is licensed under the [MIT License](LICENSE).  
 Original FrontLine base by [juliocax](https://github.com/juliocax/FrontLine-Lyrics-Desktop). Turbo optimizations by [Mehak Sandhu](https://github.com/mehaksandhudev).
+
+---
+
+<div align="center">
+
+Crafted with ❤️ by **[Mehak Sandhu](https://github.com/mehaksandhudev)** • [Portfolio](https://www.mehak-sandhu.in)
+
+</div>
+
