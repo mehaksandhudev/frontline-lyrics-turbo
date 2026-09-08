@@ -9,6 +9,7 @@
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D4?style=flat-square&logo=windows&logoColor=white)](https://github.com/mehaksandhudev/frontline-lyrics-turbo)
 [![Detection Speed](https://img.shields.io/badge/Detection-~1.2s%20Turbo-FF4500?style=flat-square&logo=speedtest&logoColor=white)](https://github.com/mehaksandhudev/frontline-lyrics-turbo)
 [![Privacy First](https://img.shields.io/badge/Privacy-100%25%20Local-22c55e?style=flat-square&logo=shield&logoColor=white)](https://github.com/mehaksandhudev/frontline-lyrics-turbo#-100-safe--privacy-first-zero-data-breach)
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=flat-square&logo=paypal&logoColor=white)](https://paypal.me/mhksandhu)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-☕-FFDD00?style=flat-square&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/mehaksandhudev)
 
 </div>
@@ -136,8 +137,9 @@ python FrontlineServer.py 8765
 
 ## ☕ Support
 
-If this project saved your sanity or made your music experience better, consider buying me a coffee!
+If this project saved your sanity or made your music experience better, consider supporting via [PayPal](https://paypal.me/mhksandhu) or [Buy Me A Coffee](https://buymeacoffee.com/mehaksandhudev)!
 
+[![Donate with PayPal](https://img.shields.io/badge/Donate-PayPal-00457C?style=flat-square&logo=paypal&logoColor=white)](https://paypal.me/mhksandhu)
 [![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20A%20Coffee-☕-FFDD00?style=flat-square&logo=buymeacoffee&logoColor=black)](https://buymeacoffee.com/mehaksandhudev)
 
 ---
