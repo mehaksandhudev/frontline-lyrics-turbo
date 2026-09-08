@@ -159,3 +159,12 @@ If this project saved your sanity or made your music experience better, consider
 
 This project is licensed under the [MIT License](LICENSE).
 Original FrontLine base by [juliocax](https://github.com/juliocax/FrontLine-Lyrics-Desktop). Turbo optimizations by [Mehak Sandhu](https://github.com/mehaksandhudev).
+
+---
+
+<div align="center">
+
+Crafted with ❤️ by **[Mehak Sandhu](https://github.com/mehaksandhudev)** • [Portfolio](https://www.mehak-sandhu.in)
+
+</div>
+
