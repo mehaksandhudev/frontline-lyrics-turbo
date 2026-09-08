@@ -123,7 +123,8 @@ namespace FrontLineOverlay
                 { "HistorySong", "Song" }, { "HistoryDate", "Date" },
                 { "HistoryEmpty", "No searches yet." }, { "HistoryRemove", "Remove" },
                 { "FontSizeTitle", "FONT SIZE" },
-                { "BgOpacityTitle", "BACKGROUND OPACITY" }
+                { "BgOpacityTitle", "BACKGROUND OPACITY" },
+                { "AutoMenu", "Auto-detect songs" }
             }},
             { "pt", new() {
                 { "Listen", "OUVIR" }, { "Search", "⌕ BUSCAR" }, { "ManualSearch", "BUSCA MANUAL" },
@@ -142,7 +143,8 @@ namespace FrontLineOverlay
                 { "HistorySong", "Música" }, { "HistoryDate", "Data" },
                 { "HistoryEmpty", "Nenhuma busca ainda." }, { "HistoryRemove", "Remover" },
                 { "FontSizeTitle", "TAMANHO DA FONTE" },
-        { "BgOpacityTitle", "OPACIDADE DO FUNDO" }
+                { "BgOpacityTitle", "OPACIDADE DO FUNDO" },
+                { "AutoMenu", "Detectar músicas auto." }
             }},
             { "es", new() {
                 { "Listen", "ESCUCHAR" }, { "Search", "⌕ BUSCAR" }, { "ManualSearch", "BÚSQUEDA MANUAL" },
@@ -159,7 +161,8 @@ namespace FrontLineOverlay
                 { "PrevTrack", "Pista anterior" }, { "NextTrack", "Pista siguiente" },
                 { "SearchHistory", "HISTORIAL DE BÚSQUEDA" }, { "HistoryArtist", "Artista" },
                 { "HistorySong", "Canción" }, { "HistoryDate", "Fecha" },
-                { "HistoryEmpty", "Aún no hay búsquedas." }, { "HistoryRemove", "Quitar" },{ "FontSizeTitle", "TAMAÑO DE FUENTE" },{ "BgOpacityTitle", "OPACIDAD DE FONDO" }
+                { "HistoryEmpty", "Aún no hay búsquedas." }, { "HistoryRemove", "Quitar" },{ "FontSizeTitle", "TAMAÑO DE FUENTE" },{ "BgOpacityTitle", "OPACIDAD DE FONDO" },
+                { "AutoMenu", "Detectar canciones auto." }
             }}
         };
 
@@ -481,6 +484,7 @@ namespace FrontLineOverlay
             BtnListenSide.Content = t["SideListen"];
             BtnResetSide.Content = t["SideClear"];
             BtnAutoSide.Content = t["Auto"];
+            LblAutoMenu.Text = t["AutoMenu"];
             LblManualSearchTitle.Text = t["ManualSearch"];
             LblArtistSearch.Text = t["Artist"];
             LblSongSearch.Text = t["Song"];
@@ -619,7 +623,7 @@ namespace FrontLineOverlay
                 }
                 ResizeGrip.Visibility = Visibility.Visible;
                 TopRightControls.Visibility = Visibility.Visible;
-                PlayingControls.Visibility = Visibility.Collapsed;
+                PlayingControls.Visibility = Visibility.Visible;
             }
         }
 
@@ -1086,7 +1090,8 @@ namespace FrontLineOverlay
         private void TurnAutoOff()
         {
             _wantAuto = false;
-            BtnAutoSide.IsChecked = false;
+            if (BtnAutoSide != null) BtnAutoSide.IsChecked = false;
+            if (ChkAutoMenu != null) ChkAutoMenu.IsChecked = false;
             AppSettings.SetBool("AutoMode", false);
             if (_autoSyncedWithServer)
                 SendCommand("AUTO_SET", autoOn: false);
@@ -1135,7 +1140,14 @@ namespace FrontLineOverlay
         {
             // Religar/desligar Auto cancela o hold do Limpar: o usuário pediu o Auto de novo.
             ReleaseAutoHold();
-            _wantAuto = BtnAutoSide.IsChecked == true;
+            if (sender == ChkAutoMenu)
+                _wantAuto = ChkAutoMenu.IsChecked == true;
+            else
+                _wantAuto = BtnAutoSide.IsChecked == true;
+
+            if (BtnAutoSide != null) BtnAutoSide.IsChecked = _wantAuto;
+            if (ChkAutoMenu != null) ChkAutoMenu.IsChecked = _wantAuto;
+
             AppSettings.SetBool("AutoMode", _wantAuto);
             if (_autoSyncedWithServer)
                 SendCommand("AUTO_TOGGLE");
@@ -1410,13 +1422,15 @@ namespace FrontLineOverlay
             if (!_autoSyncedWithServer)
             {
                 _autoSyncedWithServer = true;
-                BtnAutoSide.IsChecked = _wantAuto;
+                if (BtnAutoSide != null) BtnAutoSide.IsChecked = _wantAuto;
+                if (ChkAutoMenu != null) ChkAutoMenu.IsChecked = _wantAuto;
                 if (_wantAuto != autoMode)
                     SendCommand("AUTO_TOGGLE");
                 return;
             }
 
-            BtnAutoSide.IsChecked = autoMode;
+            if (BtnAutoSide != null) BtnAutoSide.IsChecked = autoMode;
+            if (ChkAutoMenu != null) ChkAutoMenu.IsChecked = autoMode;
             if (_wantAuto != autoMode)
             {
                 _wantAuto = autoMode;
@@ -1435,6 +1449,8 @@ namespace FrontLineOverlay
                 _wantAuto = AppSettings.GetBool("AutoMode", false);
                 if (BtnAutoSide != null)
                     BtnAutoSide.IsChecked = _wantAuto;
+                if (ChkAutoMenu != null)
+                    ChkAutoMenu.IsChecked = _wantAuto;
                 _viewMode = AppSettings.GetString("ViewMode", "banner");
                 SyncViewModeUI();
             }

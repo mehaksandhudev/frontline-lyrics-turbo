@@ -478,7 +478,7 @@
                         </StackPanel>
                     </Grid>
 
-                    <StackPanel x:Name="PlayingControls" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0" Visibility="Collapsed">
+                    <StackPanel x:Name="PlayingControls" Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0" Visibility="Collapsed">
                         <Button x:Name="BtnPrevTrack" Style="{StaticResource SquareGlassButton}" Padding="10,8" MinWidth="36" Margin="0,0,6,0" Click="BtnPrevTrack_Click" ToolTip="Previous track">
                             <Rectangle x:Name="ImgPrevTrack" Style="{StaticResource SkipGlyph}"/>
                         </Button>
@@ -621,6 +621,15 @@
                             <ToggleButton x:Name="OptBannerLyrics" Content="Banner + Lyrics" Style="{StaticResource SquareGlassToggle}" FontSize="9" Click="OptViewMode_Click" Tag="banner" Margin="2" IsChecked="True"/>
                             <ToggleButton x:Name="OptLyricsOnly" Content="Lyrics Only" Style="{StaticResource SquareGlassToggle}" FontSize="9" Click="OptViewMode_Click" Tag="lyrics" Margin="2"/>
                         </UniformGrid>
+
+                        <Grid Margin="0,0,0,15">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock x:Name="LblAutoMenu" Text="Auto-detect songs" Foreground="#99FFFFFF" FontSize="9" TextWrapping="Wrap" VerticalAlignment="Center" Margin="0,0,10,0"/>
+                            <ToggleButton x:Name="ChkAutoMenu" Grid.Column="1" Style="{StaticResource ToggleSwitchNoLabelStyle}" Click="BtnAuto_Click" VerticalAlignment="Center"/>
+                        </Grid>
 
                         <Button x:Name="BtnManualSyncToggle" Content="MANUAL SYNC" Style="{StaticResource SquareGlassButton}" Padding="0,6" Margin="0,0,0,15" Click="BtnManualSync_Toggle" Visibility="Collapsed"/>
                         <TextBlock x:Name="LblTranslateTitle" Text="TRANSLATE LYRICS" Foreground="#66FFFFFF" FontSize="9" FontWeight="Bold" Margin="0,0,0,8"/>
